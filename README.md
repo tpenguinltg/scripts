@@ -15,3 +15,7 @@ My backup script, using [Duplicity](http://www.nongnu.org/duplicity/) as its bac
 pulsewrap
 ---------
 A utility to start [PulseAudio](https://wiki.freedesktop.org/www/Software/PulseAudio/) specifically for a program (i.e. Skype). [apulse](https://github.com/i-rinat/apulse) is a better solution, but it doesn't seem to play well with my current configuration.
+
+ssh
+---
+A wrapper around `ssh` to change [Konsole](https://konsole.kde.org/)'s color scheme while logged in to a remote server. Assumes the "Linux" color scheme is the default scheme and changes to "Solarized" while running.
