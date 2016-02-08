@@ -1,0 +1,36 @@
+#!/bin/sh
+
+OUTPUT=${1:-VGA1}
+
+xrandr | grep "^$OUTPUT connected" || { echo "$OUTPUT is not connected!" >&2 ; exit 1; }
+
+# enable other monitor
+xrandr --output "$OUTPUT" --preferred --right-of LVDS1 || xrandr --output "$OUTPUT" --auto --right-of LVDS1 || exit
+
+# lxpanel on other monitor
+cp ~/.config/lxpanel/default/panels/{panel,alternate}
+patch ~/.config/lxpanel/default/panels/panel <<EOF >/dev/null
+--- panel	2015-05-05 22:46:40.951040255 -0400
++++ alternate	2015-06-14 01:42:47.389109094 -0400
+@@ -106,11 +106,11 @@
+     Size=2
+   }
+ }
+-Plugin {
+-  type=pager
+-  Config {
+-  }
+-}
++#Plugin {
++#  type=pager
++#  Config {
++#  }
++#}
+ Plugin {
+   type=space
+   Config {
+EOF
+sed -i 's/monitor=0/monitor=1/' ~/.config/lxpanel/default/panels/alternate
+mv ~/.config/lxpanel/default/panels/panel.orig /tmp/
+
+lxpanelctl restart

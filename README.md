@@ -12,6 +12,10 @@ backup.sh
 ---------
 My backup script, using [Duplicity](http://www.nongnu.org/duplicity/) as its backend. You will probably want to change the paths defined in the script.
 
+(dis)connect-external-monitor
+-----------------------------
+Connects/disconnects an external monitor and configures [LXPanel](http://wiki.lxde.org/en/LXPanel) for the dual-monitor setup.
+
 ffmpeg-gif
 ----------
 Converts an FFmpeg-compatible file to an animated GIF. Based on a script from [phk.me](http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html)
