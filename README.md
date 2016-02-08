@@ -12,6 +12,10 @@ backup.sh
 ---------
 My backup script, using [Duplicity](http://www.nongnu.org/duplicity/) as its backend. You will probably want to change the paths defined in the script.
 
+ffmpeg-gif
+----------
+Converts an FFmpeg-compatible file to an animated GIF. Based on a script from [phk.me](http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html)
+
 pulsewrap
 ---------
 A utility to start [PulseAudio](https://wiki.freedesktop.org/www/Software/PulseAudio/) specifically for a program (i.e. Skype). [apulse](https://github.com/i-rinat/apulse) is a better solution, but it doesn't seem to play well with my current configuration.
