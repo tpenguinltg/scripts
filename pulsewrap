@@ -1,0 +1,18 @@
+#!/bin/sh
+# save Master volume
+#master_volume=`amixer get Master | tail -1 | awk '{print $3}'`
+
+# check if pulseaudio is already running
+pidof pulseaudio >/dev/null 2>/dev/null; existing_pulse=$?
+
+# start pulseaudio, because Skype refuses to use anything else
+pulseaudio --start
+
+"$@"
+
+# kill pulseaudio if it was started in this script
+[ $existing_pulse -eq 0 ] || pulseaudio --kill
+
+#restore-alsa
+# restore original volume
+#amixer set Master $master_volume
