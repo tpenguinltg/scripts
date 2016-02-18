@@ -1,18 +1,28 @@
 #!/bin/sh
-# save Master volume
-#master_volume=`amixer get Master | tail -1 | awk '{print $3}'`
 
-# check if pulseaudio is already running
-pidof pulseaudio >/dev/null 2>/dev/null; existing_pulse=$?
+file="pulsewrap-$USER.${DISPLAY#:}"
+pid_file="/tmp/$file"
+lock="/tmp/$file.lock"
 
-# start pulseaudio, because Skype refuses to use anything else
+synchronized() {
+  until mkdir "$lock" 2>/dev/null; do sleep 1; done
+  "$@"
+  rmdir "$lock"
+}
+
+cleanup() {
+  synchronized sed -i "/$$/d" "$pid_file"
+
+  # kill pulseaudio if no other programs are using it
+  [ "$(wc -l "$pid_file" | cut -d ' ' -f 1 )" -eq 0 ] && pulseaudio --kill
+}
+
+trap "cleanup" EXIT SIGINT SIGTERM
+
+synchronized echo $$ >> "$pid_file"
+
 pulseaudio --start
 
 "$@"
 
-# kill pulseaudio if it was started in this script
-[ $existing_pulse -eq 0 ] || pulseaudio --kill
-
-#restore-alsa
-# restore original volume
-#amixer set Master $master_volume
+cleanup
