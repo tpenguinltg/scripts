@@ -24,5 +24,3 @@ synchronized echo $$ >> "$pid_file"
 pulseaudio --start
 
 "$@"
-
-cleanup
