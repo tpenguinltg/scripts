@@ -1,0 +1,14 @@
+#!/bin/sh
+
+grub_cfg="/boot/grub/grub.cfg"
+default_linux="linux-ck"
+
+[ "$(id -u)" -eq 0 ] || { echo "Must be root to update GRUB config." >&2; exit 1; }
+
+cd "${grub_cfg%/*}"
+
+[ -d ".git" ] && git commit -am "Commit changes before updating GRUB config"
+
+grub-mkconfig | sed '/^menuentry '\''Arch Linux'\''/,/^}/{/echo/,/initrd/s/linux\(-[-_A-Za-z0-9]*\)\?/'"$default_linux"'/g;s/^\(\s*\)'"$default_linux"'/\1linux/;}' >"$grub_cfg"
+
+[ -d ".git" ] && git commit -am "Update GRUB config"
