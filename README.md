@@ -2,7 +2,7 @@ Scripts
 =======
 Some personal scripts that I use. Most are not intended to be used as-is; instead, use them as a base to create your own personalized scripts.
 
-All scripts are released under the [https://opensource.org/licenses/MIT](MIT license).
+All scripts are released under the [MIT license](https://opensource.org/licenses/MIT).
 
 alarm.sh
 --------
