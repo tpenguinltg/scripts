@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 destination="/mnt/backup/jason"
 
 # needs root privileges to run
-if [ $EUID -ne 0 ]; then
+if [ $(id -u) -ne 0 ]; then
   echo Rerunning as root...
   exec sudo "$0" "$@"
   #exit $?
