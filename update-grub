@@ -29,5 +29,6 @@ cd "${grub_cfg%/*}"
 [ -d ".git" ] && git commit -am "$preupdate_commit_message"
 
 grub-mkconfig | sed '/^menuentry '\''Arch Linux'\''/,/^}/{/echo/,/initrd/s/linux\(-[-_A-Za-z0-9]*\)\?/'"$default_linux"'/g;s/^\(\s*\)'"$default_linux"'/\1linux/;}' >"$grub_cfg"
+echo "Default kernel set to $default_linux"
 
 [ -d ".git" ] && git commit -am "$postupdate_commit_message"
