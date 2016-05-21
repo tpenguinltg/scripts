@@ -2,13 +2,32 @@
 
 grub_cfg="/boot/grub/grub.cfg"
 default_linux="linux-lts41-ck"
+preupdate_commit_message="Commit changes before updating GRUB config"
+postupdate_commit_message="Update GRUB config"
 
 [ "$(id -u)" -eq 0 ] || { echo "Must be root to update GRUB config." >&2; exit 1; }
 
+while getopts k:m:M:o: opt; do
+  case $opt in
+    k)
+      default_linux="$OPTARG"
+      ;;
+    m)
+      postupdate_commit_message="$OPTARG"
+      ;;
+    M)
+      preupdate_commit_message="$OPTARG"
+      ;;
+    o)
+      grub_cfg="$OPTARG"
+      ;;
+  esac
+done
+
 cd "${grub_cfg%/*}"
 
-[ -d ".git" ] && git commit -am "Commit changes before updating GRUB config"
+[ -d ".git" ] && git commit -am "$preupdate_commit_message"
 
 grub-mkconfig | sed '/^menuentry '\''Arch Linux'\''/,/^}/{/echo/,/initrd/s/linux\(-[-_A-Za-z0-9]*\)\?/'"$default_linux"'/g;s/^\(\s*\)'"$default_linux"'/\1linux/;}' >"$grub_cfg"
 
-[ -d ".git" ] && git commit -am "Update GRUB config"
+[ -d ".git" ] && git commit -am "$postupdate_commit_message"
