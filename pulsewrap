@@ -14,7 +14,7 @@ cleanup() {
   synchronized sed -i "/$$/d" "$pid_file"
 
   # kill pulseaudio if no other programs are using it
-  [ "$(wc -l "$pid_file" | cut -d ' ' -f 1 )" -eq 0 ] && pulseaudio --kill
+  [ -s "$pid_file" ] || pulseaudio --kill
 }
 
 trap "cleanup" EXIT SIGINT SIGTERM
