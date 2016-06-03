@@ -20,6 +20,10 @@ ffmpeg-gif
 ----------
 Converts an FFmpeg-compatible file to an animated GIF. Based on a script from [phk.me](http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html)
 
+pause
+-----
+Emulates the cmd.exe [PAUSE](http://ss64.com/nt/pause.html) command.
+
 pulsewrap
 ---------
 A utility to start [PulseAudio](https://wiki.freedesktop.org/www/Software/PulseAudio/) specifically for a program (i.e. Skype). [apulse](https://github.com/i-rinat/apulse) is a better solution, but it doesn't seem to play well with my current configuration.
