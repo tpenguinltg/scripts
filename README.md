@@ -37,7 +37,7 @@ ssh
 A wrapper around `ssh` to change [Konsole](https://konsole.kde.org/)'s color scheme while logged in to a remote server. Assumes the "Linux" color scheme is the default scheme and changes to "Solarized" while running.
 
 update-grub
----
+-----------
 Updates the GRUB boot file and replaces the first entry's kernel to the one specified in the script. If /boot/grub is under git control, it also commits before and after the update. This was written because `linux-lts` was getting picked up first instead of `linux-ck` and I wanted `linux-ck` to be the default.
 
 weather
