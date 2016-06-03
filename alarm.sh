@@ -113,27 +113,27 @@ case $MEDIA_PLAYER in
     ;;
   cvlc)
     if [ $GRAPHICAL -eq 1 ]; then
-      xterm -display $DISPLAY -e /usr/bin/vlc -I rc --loop --random --volume 317 $ALARM_PLAYLIST "$@"
+      xterm -display $DISPLAY -e /usr/bin/vlc -I rc --loop --random --volume 317 "$ALARM_PLAYLIST" "$@"
     else
-      /usr/bin/cvlc --loop --random --volume 317 $ALARM_PLAYLIST "$@"
+      /usr/bin/cvlc --loop --random --volume 317 "$ALARM_PLAYLIST" "$@"
     fi
     ;;
   nvlc)
     if [ $GRAPHICAL -eq 1 ]; then
-      xterm -display $DISPLAY -e /usr/bin/vlc -I ncurses --loop --random --volume 317 $ALARM_PLAYLIST "$@"
+      xterm -display $DISPLAY -e /usr/bin/vlc -I ncurses --loop --random --volume 317 "$ALARM_PLAYLIST" "$@"
     else
-      /usr/bin/nvlc --loop --random --volume 317 $ALARM_PLAYLIST "$@"
+      /usr/bin/nvlc --loop --random --volume 317 "$ALARM_PLAYLIST" "$@"
     fi
     ;;
   mplayer)
     if [ $GRAPHICAL -eq 1 ]; then
-      xterm -display $DISPLAY -e /usr/bin/mplayer -playlist -shuffle $ALARM_PLAYLIST "$@"
+      xterm -display $DISPLAY -e /usr/bin/mplayer -playlist -shuffle "$ALARM_PLAYLIST" "$@"
     else
-      /usr/bin/mplayer -playlist -shuffle $ALARM_PLAYLIST "$@"
+      /usr/bin/mplayer -playlist -shuffle "$ALARM_PLAYLIST" "$@"
     fi
     ;;
   *)
-    DISPLAY=$DISPLAY /usr/bin/vlc --loop --random --volume 317 $ALARM_PLAYLIST "$@"
+    DISPLAY=$DISPLAY /usr/bin/vlc --loop --random --volume 317 "$ALARM_PLAYLIST" "$@"
     ;;
 esac
 EXIT_VALUE=$?
