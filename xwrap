@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ -v DISPLAY ] && { [ "$TERM" = "linux" ] || [ -z "$TERM" ]; }; then
+  # in a graphical shell; show in xterm
+  exec xterm -e "$@"
+else
+  # already in terminal; don't spawn a new one
+  exec "$@"
+fi

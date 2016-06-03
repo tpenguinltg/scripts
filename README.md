@@ -43,3 +43,7 @@ Updates the GRUB boot file and replaces the first entry's kernel to the one spec
 weather
 -------
 Shows the weather according to wttr.in. Takes in the resource name as an optional parameter (e.g. for wttr.in/Moon, execute `weather Moon`).
+
+xwrap
+-----
+Executes its arguments in xterm if not in a terminal. xterm will exit when the program exits.
