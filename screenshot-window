@@ -1,0 +1,2 @@
+#!/bin/sh
+screenshot -w "$(xdotool getwindowfocus -f)" "$@"

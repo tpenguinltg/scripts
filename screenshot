@@ -1,0 +1,48 @@
+#!/bin/sh
+
+screenshots_dir="$HOME/Pictures/Screenshots"
+prefix="screenshot_"
+date_format="%Y-%m-%d_%H-%M-%S"
+window="root"
+
+print_help() {
+  cat <<EOF
+Takes a screenshot and saves it to a timestamped file.
+Usage: ${0##*/} [OPTIONS]
+       ${0##*/} -h
+
+PARAMETERS
+
+OPTIONS
+    -d <directory>    The directory to put the screenshot in. Defaults to "$screenshots_dir".
+    -f <format>       The date format to use. Defaults to "$date_format". See date(1).
+    -p <prefix>       The prefix to use for the screenshot file. Defaults to "$prefix".
+    -w <window>       The window to capture. Defaults to "root".
+    -h                Show this help.
+EOF
+}
+
+while getopts d:f:p:w: opt; do
+  case "$opt" in
+    d)
+      screenshots_dir="$OPTARG"
+      ;;
+    p)
+      prefix="$OPTARG"
+      ;;
+    w)
+      window="$OPTARG"
+      ;;
+    h)
+      print_help
+      exit 0
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+outfile="$screenshots_dir/${prefix}$(date +"$date_format").png"
+
+import -border -window "$window" "$@" "$outfile" &&
+  echo "Screenshot saved to $outfile"

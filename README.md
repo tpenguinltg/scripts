@@ -49,6 +49,17 @@ well with my current configuration.
 [PulseAudio]: https://wiki.freedesktop.org/www/Software/PulseAudio/
 [apulse]: https://github.com/i-rinat/apulse
 
+screenshot, screenshot-window
+-----------------------------
+`screenshot` takes a screenshot of the given window, or the whole
+display (the root window) if no window given.
+
+`screenshot-window` takes a screenshot of the currently-focused window.
+It will pass its arguments to `screenshot`.  It depends on `screenshot`
+and [`xdotool`][xdotool].
+
+[xdotool]: http://www.semicomplete.com/projects/xdotool/
+
 remove-trailing-silence
 -----------------------
 Trims trailing silence from an audio file. Pass the audio file as the
