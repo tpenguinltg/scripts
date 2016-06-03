@@ -85,4 +85,3 @@ else
   echo 'ERROR: Backup medium not found!' >&2;
   exit 2
 fi
-
