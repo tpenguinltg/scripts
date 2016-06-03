@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MEDIA_PLAYER=vlc
 # DISPLAY for cron
