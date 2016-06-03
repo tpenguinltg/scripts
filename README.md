@@ -39,3 +39,7 @@ A wrapper around `ssh` to change [Konsole](https://konsole.kde.org/)'s color sch
 update-grub
 ---
 Updates the GRUB boot file and replaces the first entry's kernel to the one specified in the script. If /boot/grub is under git control, it also commits before and after the update. This was written because `linux-lts` was getting picked up first instead of `linux-ck` and I wanted `linux-ck` to be the default.
+
+weather
+-------
+Shows the weather according to wttr.in. Takes in the resource name as an optional parameter (e.g. for wttr.in/Moon, execute `weather Moon`).
