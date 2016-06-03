@@ -13,6 +13,10 @@ alarm.sh
 A wakeup alarm script. It adjusts volume levels and plays a playlist.
 Pass in `-h` for more details.
 
+backlight-off
+-------------
+Turns off the display backlight.
+
 backup.sh
 ---------
 My backup script, using [Duplicity][] as its backend. You will probably
