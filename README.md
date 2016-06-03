@@ -56,7 +56,9 @@ well with my current configuration.
 remove-trailing-silence
 -----------------------
 Trims trailing silence from an audio file. Pass the audio file as the
-first parameter and the output filename as the second.
+first parameter and the output filename as the second. Depends on [ffmpeg][].
+
+[ffmpeg]: https://ffmpeg.org/
 
 screenshot, screenshot-window
 -----------------------------
