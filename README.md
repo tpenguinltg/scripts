@@ -28,6 +28,10 @@ pulsewrap
 ---------
 A utility to start [PulseAudio](https://wiki.freedesktop.org/www/Software/PulseAudio/) specifically for a program (i.e. Skype). [apulse](https://github.com/i-rinat/apulse) is a better solution, but it doesn't seem to play well with my current configuration.
 
+remove-trailing-silence
+-----------------------
+Trims trailing silence from an audio file. Pass the audio file as the first parameter and the output filename as the second.
+
 ssh
 ---
 A wrapper around `ssh` to change [Konsole](https://konsole.kde.org/)'s color scheme while logged in to a remote server. Assumes the "Linux" color scheme is the default scheme and changes to "Solarized" while running.
