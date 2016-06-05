@@ -63,7 +63,10 @@ first parameter and the output filename as the second. Depends on [ffmpeg][].
 screenshot, screenshot-window
 -----------------------------
 `screenshot` takes a screenshot of the given window, or the whole
-display (the root window) if no window given.
+display (the root window) if no window given. It depends on
+[ImageMagick][].
+
+[ImageMagick]: https://www.imagemagick.org/
 
 `screenshot-window` takes a screenshot of the currently-focused window.
 It will pass its arguments to `screenshot`.  It depends on `screenshot`
