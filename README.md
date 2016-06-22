@@ -38,6 +38,11 @@ from [phk.me][]
 
 [phk.me]: http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
 
+mkscript
+--------
+Creates a file from the contents of stdin and makes it executable.
+Useful for quickly making scripts.
+
 pause
 -----
 Emulates the cmd.exe [PAUSE][] command.
