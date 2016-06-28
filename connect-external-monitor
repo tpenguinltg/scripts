@@ -1,12 +1,13 @@
 #!/bin/sh
 
 OUTPUT=${1:-VGA1}
+MAIN=LVDS1
 panelsdir="$HOME/.config/lxpanel/default/panels"
 
 xrandr | grep "^$OUTPUT connected" || { echo "$OUTPUT is not connected!" >&2 ; exit 1; }
 
 # enable other monitor
-xrandr --output "$OUTPUT" --preferred --right-of LVDS1 || xrandr --output "$OUTPUT" --auto --right-of LVDS1 || exit
+xrandr --output "$OUTPUT" --preferred --right-of "$MAIN" || xrandr --output "$OUTPUT" --auto --right-of "$MAIN" || exit
 
 # lxpanel on other monitor
 cd "$panelsdir"
