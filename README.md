@@ -1,8 +1,9 @@
 Scripts
 =======
-Some personal scripts that I use. Most are not intended to be used
+Some personal scripts that I use. Many are not intended to be used
 as-is; instead, use them as a base to create your own personalized
-scripts.
+scripts. These scripts have only been tested on Linux, but some will
+probably work on other systems, perhaps with small modifications.
 
 All scripts are released under the [MIT license][].
 
