@@ -59,6 +59,12 @@ well with my current configuration.
 [PulseAudio]: https://wiki.freedesktop.org/www/Software/PulseAudio/
 [apulse]: https://github.com/i-rinat/apulse
 
+remote-size
+-----------
+Returns the size of the given URI. The size is determined by the
+`Content-Length` HTTP header. Pass `-h` to output in a "human-readable"
+format.
+
 remove-trailing-silence
 -----------------------
 Trims trailing silence from an audio file. Pass the audio file as the

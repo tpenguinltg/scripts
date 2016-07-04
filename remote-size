@@ -1,0 +1,16 @@
+#!/bin/sh
+
+format=cat
+
+while getopts h opt; do
+  case $opt in
+    h)
+      # human-readable format
+      format="numfmt --to=iec"
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+curl -sLI "$@" | grep Content-Length | sed 's/.*Content-Length: \([0-9]*\).*/\1/' | $format
