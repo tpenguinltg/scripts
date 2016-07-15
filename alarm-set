@@ -1,0 +1,14 @@
+#!/bin/sh
+alarm_flags="-e"
+
+while getopts E opt; do
+  case $opt in
+    E)
+      alarm_flags="-E"
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+echo "alarm.sh $alarm_flags" | at "$@"

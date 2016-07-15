@@ -14,6 +14,17 @@ alarm.sh
 A wakeup alarm script. It adjusts volume levels and plays a playlist.
 Pass in `-h` for more details.
 
+alarm-set
+---------
+Sets up a one-time alarm. It depends on `alarm.sh` and [`atd`][at]. By
+default, the `-e` flag is passed to `alarm.sh` to manipulate the volume.
+Pass in `-E` to make it safer for headphones. There is currently no way
+to disable volume manipulation.
+
+The rest of the arguments are passed to `at`.
+
+[at]: https://en.wikipedia.org/wiki/At_%28Unix%29
+
 backlight-off
 -------------
 Turns off the display backlight.
