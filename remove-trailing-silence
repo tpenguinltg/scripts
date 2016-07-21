@@ -1,3 +1,3 @@
 #!/bin/sh
 # probably from <http://ffmpeg-users.933282.n4.nabble.com/How-to-delete-digital-silence-td4667256.html#d1410595500000-959>
-exec ffmpeg -i "$1" -af silenceremove=1:0.1:0:1:0.1:0 "$2"
+exec ffmpeg -i "$1" -af silenceremove=1:0.1:0:1:0.1:0 -write_xing 0 "$2"
