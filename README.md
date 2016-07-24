@@ -36,6 +36,17 @@ want to change the paths defined in the script.
 
 [Duplicity]: http://www.nongnu.org/duplicity/
 
+catls
+-----
+Outputs the contents of the given paths. If the path is a directory, an
+`ls` will be performed on it. Otherwise, a `cat` will be performed.
+Multiple paths may be passed and each will be processed independently.
+
+This is especially useful when browsing an unfamiliar place like
+[`/proc`][proc].
+
+[proc]: http://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html
+
 (dis)connect-external-monitor
 -----------------------------
 Connects/disconnects an external monitor and configures [LXPanel][] for
