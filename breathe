@@ -1,0 +1,19 @@
+#!/bin/sh
+
+on_duration=$1
+off_duration=$2
+shift 2
+
+"$@" &
+pid=$!
+
+while ps -p $pid >/dev/null 2>&1; do
+  sleep "$on_duration"
+  kill -STOP "$pid"
+
+  sleep "$off_duration"
+  kill -CONT "$pid"
+done
+
+# exit with the exit status of the job
+wait "$pid"

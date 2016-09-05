@@ -36,6 +36,15 @@ want to change the paths defined in the script.
 
 [Duplicity]: http://www.nongnu.org/duplicity/
 
+breathe
+-------
+`breathe` allows a job to repeatedly run for a length of time then rest
+for a length of time by sending the `CONT` and `STOP` signals to the
+process after the specified durations. The durations are passed to
+`sleep`.
+
+    breathe <on_duration> <off_duration> <command>
+
 catls
 -----
 Outputs the contents of the given paths. If the path is a directory, an
