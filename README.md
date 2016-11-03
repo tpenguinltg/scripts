@@ -56,10 +56,12 @@ This is especially useful when browsing an unfamiliar place like
 
 [proc]: http://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html
 
-(dis)connect-external-monitor
------------------------------
+(dis)connect-external-monitor, toggle-external-monitor
+------------------------------------------------------
 Connects/disconnects an external monitor and configures [LXPanel][] for
-the dual-monitor setup.
+the dual-monitor setup. `toggle-external monitor` toggles the display on
+and off depending on its current state; it depends on
+(`dis`)`connect-external-monitor`
 
 [LXPanel]: http://wiki.lxde.org/en/LXPanel
 
