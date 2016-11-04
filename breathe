@@ -9,10 +9,10 @@ pid=$!
 
 while ps -p $pid >/dev/null 2>&1; do
   sleep "$on_duration"
-  kill -STOP "$pid"
+  kill -STOP "$pid" 2>/dev/null
 
   sleep "$off_duration"
-  kill -CONT "$pid"
+  kill -CONT "$pid" 2>/dev/null
 done
 
 # exit with the exit status of the job
