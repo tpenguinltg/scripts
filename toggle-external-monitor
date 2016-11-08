@@ -3,6 +3,8 @@
 OUTPUT=${1:-VGA1}
 
 if xrandr | grep -q "^$OUTPUT connected ("; then
+  # Output is connected but disabled.
+  # A connected and enabled output has a mode before the '('.
   connect-external-monitor "$OUTPUT"
 else
   disconnect-external-monitor "$OUTPUT"
