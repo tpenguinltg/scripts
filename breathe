@@ -9,7 +9,7 @@ pid=$!
 
 while ps -p $pid >/dev/null 2>&1; do
   sleep "$on_duration"
-  kill -STOP "$pid" 2>/dev/null
+  kill -STOP "$pid" 2>/dev/null || continue
 
   sleep "$off_duration"
   kill -CONT "$pid" 2>/dev/null
