@@ -1,6 +1,0 @@
-#!/bin/sh
-
-trap "konsoleprofile ColorScheme=Linux" SIGINT SIGTERM EXIT
-
-konsoleprofile ColorScheme=${KONSOLE_COLORSCHEME:-Solarized}
-/usr/bin/ssh "$@"

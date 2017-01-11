@@ -119,14 +119,6 @@ and [`xdotool`][xdotool].
 
 [xdotool]: http://www.semicomplete.com/projects/xdotool/
 
-ssh
----
-A wrapper around `ssh` to change [Konsole][]'s color scheme while logged
-in to a remote server. Assumes the "Linux" color scheme is the default
-scheme and changes to "Solarized" while running.
-
-[Konsole]: https://konsole.kde.org/
-
 update-grub
 -----------
 Updates the GRUB boot file and replaces the first entry's kernel to the
