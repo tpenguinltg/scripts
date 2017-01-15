@@ -1,8 +1,9 @@
 #!/bin/sh
 
 file="pulsewrap-$USER.${DISPLAY#:}"
-pid_file="/tmp/$file"
-lock="/tmp/$file.lock"
+tmpdir-"${TMPDIR:-/tmp}"
+pid_file="$tmpdir/$file"
+lock="$tmpdir/$file.lock"
 
 synchronized() {
   until mkdir "$lock" 2>/dev/null; do sleep 1; done
