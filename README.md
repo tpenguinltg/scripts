@@ -119,6 +119,14 @@ and [`xdotool`][xdotool].
 
 [xdotool]: http://www.semicomplete.com/projects/xdotool/
 
+toggle-screensaver
+------------------
+`toggle-screensaver` disables or enables your screensaver (set to
+[xscreensaver][] in the script) by sending SIGSTOP or SIGCONT to the process.
+It will also display a desktop notification via `notify-send`.
+
+[xscreensaver]: https://www.jwz.org/xscreensaver/
+
 update-grub
 -----------
 Updates the GRUB boot file and replaces the first entry's kernel to the

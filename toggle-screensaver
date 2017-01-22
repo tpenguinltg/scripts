@@ -1,0 +1,13 @@
+#!/bin/sh
+screensaver=xscreensaver
+screensaver_ps="$(ps -C "$screensaver" -o pid=,s=)"
+screensaver_pid="${screensaver_ps% *}"
+screensaver_state="${screensaver_ps##* }" # $screensaver begins with a space
+
+if [ "$screensaver_state" = "T" ]; then
+  # stopped; wake it
+  kill -CONT $screensaver_pid && notify-send "$screensaver enabled"
+else
+  # running; stop it
+  kill -STOP $screensaver_pid && notify-send "$screensaver disabled"
+fi
