@@ -18,7 +18,7 @@ cleanup() {
   [ -s "$pid_file" ] || pulseaudio --kill
 }
 
-trap "cleanup" EXIT SIGINT SIGTERM
+trap "cleanup" EXIT HUP INT TERM
 
 synchronized echo $$ >> "$pid_file"
 
