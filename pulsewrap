@@ -20,7 +20,11 @@ cleanup() {
 
 trap "cleanup" EXIT HUP INT TERM
 
-synchronized echo $$ >> "$pid_file"
+log_pid() {
+  echo $$ >> "$pid_file"
+}
+
+synchronized log_pid
 
 pulseaudio --start
 
