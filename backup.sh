@@ -14,10 +14,16 @@ fi
 # Proceed with backup only if backum medium is present
 if [ ! -d "$destination" ]; then
   echo 'ERROR: Backup medium not found!' >&2;
-  exit 2
+  exit 1
 fi
 
 exit_status=
+
+# bit field:
+# 4: system files
+# 8: crontabs
+# 16: user data
+failed=0
 
 # System files
 echo Backing up system files...
@@ -27,6 +33,7 @@ exit_status=$?
 if [ $exit_status -eq 0 ]; then
   echo System files backup complete.
 else
+  failed=$((failed + 4))
   echo System files backup aborted.
 fi
 
@@ -49,6 +56,7 @@ exit_status=$?
 if [ $exit_status -eq 0 ]; then
   echo User crontab backup complete.
 else
+  failed=$((failed + 8))
   echo User crontab backup aborted.
 fi
 
@@ -70,6 +78,7 @@ exit_status=$?
 if [ $exit_status -eq 0 ]; then
   echo User data backup complete.
 else
+  failed=$((failed + 16))
   echo User data backup aborted.
 fi
 
@@ -84,3 +93,4 @@ fi
 sync
 
 echo Backup complete.
+exit $failed
