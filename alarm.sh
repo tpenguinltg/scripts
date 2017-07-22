@@ -14,7 +14,7 @@ Starts a media player with a predefined playlist, optionally adjusting volume le
 
 OPTIONS
 EOF
-grep '###' "$0" | grep -v 'grep' | sed 's/^\s*###/   /'
+grep '^\s*###' "$0" | sed 's/^\s*###/   /'
 }
 
 # command line options
