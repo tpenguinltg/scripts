@@ -28,7 +28,7 @@ failed=0
 # System files
 echo Backing up system files...
 [ -d "$destination/system" ] || mkdir "$destination/system"
-duplicity --full-if-older-than 3M --verbosity info --no-encryption / --include /etc --include /var/lib/pacman/local --include /boot --exclude '**' "file://$destination/system"
+duplicity --full-if-older-than 3M --verbosity info --no-encryption / --exclude-if-present .nobackup --include /etc --include /var/lib/pacman/local --include /boot --exclude '**' "file://$destination/system"
 exit_status=$?
 if [ $exit_status -eq 0 ]; then
   echo System files backup complete.
@@ -51,7 +51,7 @@ sync
 # crontabs in /etc are already backed up in system backup
 echo Backing up user crontabs...
 [ -d "$destination/crontabs" ] || mkdir "$destination/crontabs"
-duplicity --full-if-older-than 3M --verbosity info --no-encryption / --include /etc --include /var/spool/cron --exclude '**' "file://$destination/crontabs"
+duplicity --full-if-older-than 3M --verbosity info --no-encryption / --exclude-if-present .nobackup --include /etc --include /var/spool/cron --exclude '**' "file://$destination/crontabs"
 exit_status=$?
 if [ $exit_status -eq 0 ]; then
   echo User crontab backup complete.
@@ -73,7 +73,7 @@ sync
 # User data
 echo Backing up user data...
 [ -d "$destination/data" ] || mkdir "$destination/data"
-duplicity --full-if-older-than 3M --verbosity info --no-encryption / --include /home --include /data --exclude '**' "file://$destination/data"
+duplicity --full-if-older-than 3M --verbosity info --no-encryption / --exclude-if-present .nobackup --include /home --include /data --exclude '**' "file://$destination/data"
 exit_status=$?
 if [ $exit_status -eq 0 ]; then
   echo User data backup complete.
