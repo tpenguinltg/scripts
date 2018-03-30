@@ -64,7 +64,7 @@ sync
 
 if [ $exit_status -eq 0 ]; then # Remove old backups
   echo Removing old full user crontab backups...
-  duplicity remove-all-but-n-full 2 --force "file://$destination/system"
+  duplicity remove-all-but-n-full 2 --force "file://$destination/crontabs"
   echo Removed old full user crontab backups.
 fi
 
