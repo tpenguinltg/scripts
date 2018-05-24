@@ -127,6 +127,13 @@ It will also display a desktop notification via `notify-send`.
 
 [xscreensaver]: https://www.jwz.org/xscreensaver/
 
+torsh
+-----
+A [Tor][] wrapper around bash. No history is saved. Tor mode can be
+detected by checking the `TORSH` environment variable.
+
+[Tor]: https://www.torproject.org/
+
 update-grub
 -----------
 Updates the GRUB boot file and replaces the first entry's kernel to the

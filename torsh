@@ -1,0 +1,5 @@
+#!/bin/sh
+export HISTFILE=/dev/null
+export TORSH=1
+torify bash
+clear
