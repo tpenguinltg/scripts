@@ -77,6 +77,13 @@ mkscript
 Creates a file from the contents of stdin and makes it executable.
 Useful for quickly making scripts.
 
+npm-scripts
+-----------
+Outputs the `scripts` section of a `package.json`. Can be run from anywhere
+inside a project that has a `package.json`. Requires [`jq`][jq].
+
+[jq]: https://stedolan.github.io/jq/
+
 pause
 -----
 Emulates the cmd.exe [PAUSE][] command.

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+: ${packagejson:=package.json}
+
+until [ -e "$packagejson" ]; do
+  if [ "$PWD" = / ]; then
+    echo "ERROR: Root directory reached. $packagejson not found." >&2
+    exit 1
+  fi
+
+  cd ..
+done
+
+jq .scripts "$packagejson"
