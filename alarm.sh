@@ -17,9 +17,22 @@ EOF
 grep '^\s*###' "$0" | sed 's/^\s*###/   /'
 }
 
+restore_audio_levels() {
+  # restore audio levels if adjusted
+  if [ $AUDIO_LEVELS_ADJUSTED -eq 0 ]; then
+    amixer -q set Master $master_volume
+    amixer -q set Master $master_mute
+    amixer -q set Speaker $speaker_volume
+    amixer -q set Speaker $speaker_mute
+    amixer -q set Headphone $headphone_volume
+    amixer -q set Headphone $headphone_mute
+    AUDIO_LEVELS_ADJUSTED=1
+  fi
+}
+
 # command line options
 OPTIND=1
-while getopts aeEf:hknp: opt; do
+while getopts aeEAf:hknp: opt; do
   case $opt in
     ### -p player
     ###    Selects the player to play the alarm with. Legal values are
@@ -78,6 +91,12 @@ while getopts aeEf:hknp: opt; do
       fi
 
       AUDIO_LEVELS_ADJUSTED=0
+      ;;
+    ### -A
+    ###    Do not adjust audio levels. If both -A and -a are specified,
+    ###    the last one takes effect.
+    A)
+      restore_audio_levels
       ;;
     ### -f file
     ###    Specifies the file to play. Overrides the ALARM_PLAYLIST variable.
@@ -138,14 +157,6 @@ case $MEDIA_PLAYER in
 esac
 EXIT_VALUE=$?
 
-# restore audio levels if adjusted
-if [ $AUDIO_LEVELS_ADJUSTED -eq 0 ]; then
-  amixer -q set Master $master_volume
-  amixer -q set Master $master_mute
-  amixer -q set Speaker $speaker_volume
-  amixer -q set Speaker $speaker_mute
-  amixer -q set Headphone $headphone_volume
-  amixer -q set Headphone $headphone_mute
-fi
+restore_audio_levels
 
 exit $EXIT_VALUE
