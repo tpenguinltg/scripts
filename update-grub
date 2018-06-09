@@ -5,7 +5,7 @@ default_linux="linux-zen"
 preupdate_commit_message="Commit changes before updating GRUB config"
 postupdate_commit_message="Update GRUB config"
 
-[ "$(id -u)" -eq 0 ] || { echo "Must be root to update GRUB config." >&2; exit 1; }
+[ -w "$grub_cfg" ] || { echo "Permission denied: no write access to ${grub_cfg}" >&2; exit 1; }
 
 while getopts k:m:M:o: opt; do
   case $opt in
