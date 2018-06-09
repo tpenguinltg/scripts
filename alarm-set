@@ -1,14 +1,17 @@
-#!/bin/sh
-alarm_flags="-e"
+#!/bin/bash
+alarm_flags=()
 
-while getopts E opt; do
+while getopts aAeEp: opt; do
   case $opt in
-    E)
-      alarm_flags="-E"
+    [aAeE])
+      alarm_flags+=("-$opt")
+      ;;
+    [p])
+      alarm_flags+=("-$opt" "$OPTARG")
       ;;
   esac
 done
 
 shift $((OPTIND-1))
 
-echo "alarm.sh $alarm_flags" | at "$@"
+echo "alarm.sh" "${alarm_flags[@]}" | at "$@"
