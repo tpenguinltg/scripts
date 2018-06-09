@@ -24,6 +24,8 @@ while getopts k:m:M:o: opt; do
   esac
 done
 
+shift $(( OPTIND - 1 ))
+
 cd "${grub_cfg%/*}"
 
 [ -d ".git" ] && git commit -am "$preupdate_commit_message"
