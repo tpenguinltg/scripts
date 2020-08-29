@@ -1,8 +1,7 @@
 #!/bin/sh
 screensaver=xscreensaver
-screensaver_ps="$(ps -C "$screensaver" -o pid=,s=)"
-screensaver_pid="${screensaver_ps% *}"
-screensaver_state="${screensaver_ps##* }" # $screensaver begins with a space
+screensaver_pid="$(pgrep -x -U "$(id -u)" "$screensaver")"
+screensaver_state="$(ps -o s= "$screensaver_pid")"
 
 if [ "$screensaver_state" = "T" ]; then
   # stopped; wake it
