@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# https://www.cyberciti.biz/faq/linux-which-process-is-using-swap/
+smem -s swap -c 'pid name swap' -k "$@"

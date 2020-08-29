@@ -72,6 +72,11 @@ from [phk.me][]
 
 [phk.me]: http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
 
+ls-swap
+-------
+Lists the approximate swap usage of each process and sorts them by usage
+in ascending order.
+
 mkscript
 --------
 Creates a file from the contents of stdin and makes it executable.
