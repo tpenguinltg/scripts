@@ -1,0 +1,35 @@
+#!/bin/sh
+
+file="redshift-suspend-${USER}.${DISPLAY#:}"
+tmpdir="${TMPDIR:-/tmp}"
+pid_file="${tmpdir}/${file}"
+lock="${tmpdir}/${file}.lock"
+
+synchronized() {
+  until mkdir "$lock" 2>/dev/null; do sleep 1; done
+  "$@"
+  rmdir "$lock"
+}
+
+cleanup() {
+  sed -i "/^$$\$/d" "$pid_file"
+
+  # kill readjust redshift if no other programs are suspending
+  if [ "$(wc -l < "$pid_file")" -eq 1 ]; then
+    redshift-adjust "$(head -1 "$pid_file")" >/dev/null
+    rm -f -- "$pid_file"
+  fi
+}
+
+trap "synchronized cleanup" EXIT
+
+log_pid() {
+  [ -f "$pid_file" ] || echo "=$(redshift-adjust -p)" >"$pid_file"
+  echo $$ >>"$pid_file"
+}
+
+synchronized log_pid
+
+redshift-adjust =6500 >/dev/null
+
+"$@"

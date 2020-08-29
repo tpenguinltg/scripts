@@ -99,6 +99,16 @@ well with my current configuration.
 [PulseAudio]: https://wiki.freedesktop.org/www/Software/PulseAudio/
 [apulse]: https://github.com/i-rinat/apulse
 
+redshift-suspend
+----------------
+Resets redshift to 6500K while the given program is running, then
+returns redshift to the temperature it was previously at. If invoked
+multiple times, it will return the temperature only after all programs
+have exited.
+Depends on [redshift-adjust][].
+
+[redshift-adjust]: https://github.com/maandree/redshift-adjust
+
 remote-size
 -----------
 Returns the size of the given URI. The size is determined by the
