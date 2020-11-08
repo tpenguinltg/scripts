@@ -37,7 +37,7 @@ if [ -z "$PASSPHRASE" ]; then
     fi
     unset confirm_passphrase
 
-    </dev/urandom tr -dc 'A-Za-z0-9' | gpg --batch --symmetric --passphrase-fd 3 -o "${passphrase_check_file}" 3<<<"$PASSPHRASE"
+    </dev/urandom tr -dc 'A-Za-z0-9' | head -c 16 | gpg --batch --symmetric --passphrase-fd 3 -o "${passphrase_check_file}" 3<<<"$PASSPHRASE"
   fi
   stty echo
 fi
