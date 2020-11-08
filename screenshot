@@ -44,5 +44,7 @@ shift $((OPTIND-1))
 
 outfile="$screenshots_dir/${prefix}$(date +"$date_format").png"
 
-import -border -window "$window" "$@" "$outfile" &&
-  echo "Screenshot saved to $outfile"
+if import -border -window "$window" "$@" "$outfile"; then
+  echo "Screenshot saved to ${outfile}"
+  notify-send "Screenshot saved to ${outfile}" || true
+fi
